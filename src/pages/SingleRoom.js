@@ -85,4 +85,3 @@ export default class SingleRoom extends Component {
     );
   }
 }
-//3:17:50
