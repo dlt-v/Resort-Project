@@ -9,7 +9,6 @@ import StyledHero from "../components/StyledHero";
 export default class SingleRoom extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
 
     this.state = {
       slug: this.props.match.params.slug,
@@ -42,6 +41,7 @@ export default class SingleRoom extends Component {
       pets,
       images
     } = room;
+    
     const [mainImg, ...defaultImg] = images;
     return (
       <>
@@ -58,6 +58,28 @@ export default class SingleRoom extends Component {
               <img src={item} key={index} alt={name} />
             ))}
           </div>
+          <div className="single-room-info">
+            <article className="description">
+              <h3>details</h3>
+              <p>{description}</p>
+            </article>
+            <article className="info">
+              <h3>info</h3>
+              <h6>price: ${price}</h6>
+              <h6>size: {size} SQFT</h6>
+              <h6>max capacity: {capacity} {capacity > 1 ? 'people' : 'person' }</h6>
+              <h6>pets: {pets ? 'allowed' : 'not allowed'}</h6>
+              <h6>{breakfast && 'breakfast included'}</h6>
+            </article>
+          </div>
+        </section>
+        <section className="room-extras">
+          <h6>extras</h6>
+          <ul className="extras">
+            {extras.map((item, index) => (
+              <li key={index}>- {item}</li>
+            ))}
+          </ul>
         </section>
       </>
     );
