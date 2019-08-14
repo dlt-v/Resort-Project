@@ -8,15 +8,13 @@ function RoomsContainer({ context }) {
   const { loading, sortedRooms, rooms } = context;
   if (loading) return <Loading />;
   return (
-    <div>
-      Hello from roomscontainter
+    <>
       <RoomsFilter rooms={rooms} />
       <RoomsList rooms={sortedRooms} />
-    </div>
+    </>
   );
 }
 export default withRoomConsumer(RoomsContainer);
-//3:49:30
 
 
 // export default function RoomsContainer() {
