@@ -64,6 +64,7 @@ class RoomProvider extends Component {
     );
   };
   filterRooms = () => {
+    //Get values from state
     let {
       rooms,
       type,
@@ -74,13 +75,23 @@ class RoomProvider extends Component {
       breakfast,
       pets
     } = this.state;
+    //Get all the rooms to tempRooms
     let tempRooms = [...rooms];
-    if(type !== 'all'){
+    //Parse string from capacity input to integer
+    capacity = parseInt(capacity);
+    //Filter the rooms and replace tempRooms with the result
+    //By type of room
+    if (type !== "all") {
       tempRooms = tempRooms.filter(room => room.type === type);
     }
+    //By capacity
+    if(capacity !== 1){
+      tempRooms = tempRooms.filter(room => room.capacity >= capacity)
+    }
+    //Put tempRooms in sortedRooms in State
     this.setState({
       sortedRooms: tempRooms
-    })
+    });
   };
   render() {
     return (
